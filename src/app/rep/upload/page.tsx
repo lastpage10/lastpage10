@@ -98,17 +98,17 @@ function UploadForm() {
                 const file = e.target.files?.[0];
                 setFileName(file ? file.name : null);
               }}
-              required={!fileName}
             />
             <span className="font-semibold text-ink">
               {fileName ?? "Drop PDF or PPTX here"}
             </span>
             <span className="mt-2 text-sm text-ink-soft">
               Stored in Google Cloud Storage · metadata stays in the database
+              {!fileName ? " · optional in this UI prototype" : ""}
             </span>
           </label>
 
-          <button type="submit" className="btn-primary w-full">
+          <button type="submit" className="btn-primary w-full" disabled={!title.trim()}>
             Upload to shelf
           </button>
         </>
